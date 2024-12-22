@@ -104,7 +104,6 @@ public class Runigram {
 		for (int i = 0; i < image[0].length; i++){
 			for (int j = 0; j < image.length; j++){
 				verFlipImage[j][i] = image[image.length - 1 - j][i];
-
 			}
 		}
 		return verFlipImage;
@@ -125,8 +124,17 @@ public class Runigram {
 	 * Returns an image which is the grayscaled version of the given image.
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] greyScaledImage = new Color[image.length][image[0].length];
+
+		for (int i = 0; i < image.length; i++){
+			for (int j = 0; j < image[0].length; j++){
+				Color greyPixel = image[i][j];
+				greyPixel = luminance(greyPixel);
+				greyScaledImage[i][j] = greyPixel;
+
+			}
+		}
+		return greyScaledImage;
 	}	
 	
 	/**
@@ -134,8 +142,20 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] scaledImage = new Color[height][width];
+		double h0 = image.length;
+		double w0 = image[0].length;
+		double heightRatio = h0 / height;
+		double widthRatio = w0 / width;
+	
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				int sourceRow = (int)(i * heightRatio);
+				int sourceCol = (int)(j * widthRatio);
+				scaledImage[i][j] = image[sourceRow][sourceCol];
+			}
+		}
+		return scaledImage;
 	}
 	
 	/**
