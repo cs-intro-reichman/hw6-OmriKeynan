@@ -85,30 +85,40 @@ public class Runigram {
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
-		Color[][] HorFlipImage = new Color[image.length][image[0].length];
+		Color[][] horFlipImage = new Color[image.length][image[0].length];
 
 		for (int i = 0; i < image.length; i++){
 			for (int j = 0; j < image[0].length; j++){
-				HorFlipImage[i][j] = image[i][image[0].length - 1 - j];
+				horFlipImage[i][j] = image[i][image[0].length - 1 - j];
 			}
 		}
-		return HorFlipImage;
+		return horFlipImage;
 	}
 	
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
-		//// Replace the following statement with your code
-		return null;
+		Color[][] verFlipImage = new Color[image.length][image[0].length];
+
+		for (int i = 0; i < image[0].length; i++){
+			for (int j = 0; j < image.length; j++){
+				verFlipImage[j][i] = image[image.length - 1 - j][i];
+
+			}
+		}
+		return verFlipImage;
 	}
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
 	private static Color luminance(Color pixel) {
-		//// Replace the following statement with your code
-		return null;
+		int red = pixel.getRed();
+		int blue = pixel.getBlue();
+		int green = pixel.getGreen();
+		int luminanceValue = (int)(0.299 * red + 0.587 * green + 0.114 * blue);
+		return new Color(luminanceValue, luminanceValue, luminanceValue);
 	}
 	
 	/**
