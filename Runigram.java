@@ -39,8 +39,17 @@ public class Runigram {
 		// For each pixel (i,j), reads 3 values from the file,
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
-		//// Replace the following statement with your code.
-		return null;
+	
+		for (int i = 0; i < numRows; i++){
+			for (int j = 0; j < numCols; j++){
+				int r = in.readInt();
+				int g = in.readInt();
+				int b = in.readInt();
+				Color newColor = new Color(r, g, b);
+				image[i][j] = newColor;
+			}
+		}
+		return image;
 	}
 
     // Prints the RGB values of a given color.
@@ -58,16 +67,32 @@ public class Runigram {
 	// For example, to check that some image processing function works correctly,
 	// we can apply the function and then use this function to print the resulting image.
 	private static void print(Color[][] image) {
-		//// Replace this comment with your code
-		//// Notice that all you have to so is print every element (i,j) of the array using the print(Color) function.
+		for (int i = 0; i < image.length; i++){
+			for (int j = 0; j < image[0].length; j++){
+				Color c = image[i][j];
+				System.out.print("(");
+				System.out.printf("%3s,", c.getRed());   
+				System.out.printf("%3s,", c.getGreen());
+				System.out.printf("%3s",  c.getBlue()); 
+				System.out.print(")");
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
 	}
 	
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] HorFlipImage = new Color[image.length][image[0].length];
+
+		for (int i = 0; i < image.length; i++){
+			for (int j = 0; j < image[0].length; j++){
+				HorFlipImage[i][j] = image[i][image[0].length - 1 - j];
+			}
+		}
+		return HorFlipImage;
 	}
 	
 	/**
